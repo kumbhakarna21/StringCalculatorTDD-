@@ -20,4 +20,14 @@ RSpec.describe StringCalculator do
       expect(calculator.add("10,20,30,40,50,60")).to eq(210)
     end
   end
+
+  context 'handle new lines between numbers (instead of commas)' do
+    it 'returns sum for an given number_string with new_lines' do
+      expect(calculator.add("1\n2,3")).to eq(6)
+    end
+
+    it 'returns sum for an given number_string with tab_lines' do
+      expect(calculator.add("1\n2,\n\n\t3")).to eq(6)
+    end
+  end
 end
