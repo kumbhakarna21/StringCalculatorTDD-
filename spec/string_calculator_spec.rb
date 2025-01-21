@@ -30,4 +30,14 @@ RSpec.describe StringCalculator do
       expect(calculator.add("1\n2,\n\n\t3")).to eq(6)
     end
   end
+
+  context 'handle number string with delimiter at beginning of the string' do
+    it 'returns sum for an given number_string with delimeters(;)' do
+      expect(calculator.add("//;\n1;2")).to eq(3)
+    end
+
+    it 'returns sum for an given number_string with delimeters(;)' do
+      expect(calculator.add("//;\n1; \t5; &!b3")).to eq(9)
+    end
+  end
 end
