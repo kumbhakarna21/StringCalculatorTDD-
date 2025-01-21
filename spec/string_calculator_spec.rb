@@ -40,4 +40,11 @@ RSpec.describe StringCalculator do
       expect(calculator.add("//;\n1; \t5; &!b3")).to eq(9)
     end
   end
+
+  context 'handle number string with negative number' do
+    it 'throws exception if negative number present' do
+      expect { calculator.add("\n1, \t-10, -30") }.to raise_error(NegativeNumbersError, "negative numbers not allowed -10, -30")
+      expect { calculator.add("\n1, \t-23, &!b-21") }.to raise_error(NegativeNumbersError, "negative numbers not allowed -23, -21")
+    end
+  end
 end
